@@ -56,6 +56,7 @@ usernameFld.addEventListener('keyup',  ()=>{
                 usernameFld.classList.remove('inputFieldsRed')
                 regexUsernameBol = true;
             }
+            regexUsernameBol = true;
         }
         });
     },750)
@@ -161,7 +162,8 @@ emailVerificationFld.addEventListener('keyup', ()=>{
 
 
 const registerReq = () => {
-   
+   console.log("in reg req")
+    console.log(regexEmailBol,regexUsernameBol,regexPasswordBol,regexEmailVerificationBol)
     if(regexPasswordBol == true && regexUsernameBol == true
        && regexEmailBol == true && regexEmailVerificationBol == true
        && emailFld.value === emailVerificationFld.value

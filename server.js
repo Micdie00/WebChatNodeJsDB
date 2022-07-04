@@ -29,14 +29,14 @@ const listOfRegisterSessions = [];
 // set static folder
 app.use(express.static('public'));
 
-app.post('/registerReq', async (req, res) => {
+app.post('/registerReq?', async (req, res) => {
     console.log(req.query);
     if(req.query.username && req.query.password && req.query.email){
         let actualRegisterSession =new registerSession(req.query.username,req.query.password,req.query.email);
         actualRegisterSession.key = makeid(6);
         listOfRegisterSessions.push(actualRegisterSession);
         await sendEmail(req.query.email)
-        res.sendFile(path.join(__dirname, 'public/index.html'));
+        res.sendFile(path.join(__dirname, 'public/registerverification.html'));
        
         
 
@@ -67,6 +67,13 @@ app.get('/emails', async (req,res) => {
     }
     res.json({email : `${isUnique}`});
 })
+
+app.post('/verificationcode?', (req,res) => {
+    let 
+    for(let i = 0; i < listOfRegisterSessions; i++){
+        
+    }
+}) 
 
 
 
